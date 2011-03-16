@@ -6,6 +6,7 @@ from point import Point
 
 class Map:
 	def __init__(self, definition_file, points):
+		# Open definition file and background image
 		definition = ElementTree.parse(open(definition_file)).getroot()
 		map_file = os.path.join(os.path.split(definition_file)[0], definition.attrib['bg'])
 		self.background = Image.open(map_file)
@@ -15,6 +16,7 @@ class Map:
 		self.west = float(definition.attrib['minlon'])
 		self.east = float(definition.attrib['maxlon'])
 
+		# Store ranges color and distance
 		self.ranges = [(float(r.attrib['distance']), 
 					(int(r.attrib['red']), int(r.attrib['green']), int(r.attrib['blue']))) 
 					for r in definition.getiterator("range")]
@@ -22,13 +24,18 @@ class Map:
 		self.width, self.height = self.background.size
 		self.points = points
 
+		# Precompute latitude and longitude at each row and column
 		self.pixel_lons = [self.west + (self.east-self.west)*(float(i)/float(self.width)) for i in range(self.width)]
 		self.pixel_lats = [self.north - (self.north-self.south)*(float(j)/float(self.height)) for j in range(self.height)]
 
 	def generate(self):
+		"Generates the output image"
+	
 		ranges_image = Image.new('RGB', self.background.size)
 		
+		# Create a lists list with the distance from each pixel to its nearest point
 		colors = [[self.color(self.distance(i,j)) for i in range(self.width)] for j in range(self.height)]
+		# Flatten list
 		colors = [item for sublist in colors for item in sublist]
 
 		ranges_image.putdata(colors)

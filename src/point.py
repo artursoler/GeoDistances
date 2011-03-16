@@ -5,6 +5,7 @@ EARTH_RAD_2 = EARTH_RAD * 2
 
 class Point:
 	def __init__(self, lat, lon):
+		# Precomputes some values
 		self.lat = math.radians(lat)
 		self.lon = math.radians(lon)
 		self.lat_cos = math.cos(self.lat)
@@ -22,3 +23,4 @@ class Point:
 
 	def __repr__(self):
 		return str(self)
+
