@@ -1,0 +1,26 @@
+GeoDistances is a little application with the purpose of constructing a kind of
+maps we will name 'range distance maps'.
+
+Range distance maps define, for each pixel in a given original background map
+and a set of waypoints, a color based on the distance from the given pixel
+to its nearest waypoint.
+
+Colors are defined in ranges, for example:
+- White for pixels less than 100 km from a point
+- Green for pixels between 100 and 1000 km from a point
+- Etc.
+
+The usage of the application is:
+
+python geodistances.py GPX_MAP MAP_DEFINITION OUTPUT_IMAGE
+
+where:
+- GPX_MAP is a zipped gpx file.
+- MAP_DEFINITION is a xml file that define background image, borders and 
+ranges.
+- OUTPUT_IMAGE is the image that will be generated. It can be in different 
+formats depending on the Python Imaging Library (PIL) on the system.
+
+The main target users of this application are users of geocaching.com that
+can receive gpx files of their found geocaches.
+

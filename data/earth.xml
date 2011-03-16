@@ -1,0 +1,7 @@
+<map bg="earth.bmp" minlat="-90" maxlat="90" minlon="-180" maxlon="180">
+  <range distance="100" red="255" green="255" blue="255" />
+  <range distance="1000" red="0" green="255" blue="0" />
+  <range distance="5000" red="0" green="0" blue="255" />
+  <range distance="10000" red="255" green="255" blue="0" />
+  <range distance="1000000" red="255" green="0" blue="0" />
+</map>

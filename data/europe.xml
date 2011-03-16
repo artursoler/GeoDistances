@@ -1,0 +1,7 @@
+<map bg="europe.jpg" minlat="33.79" maxlat="70.936" minlon="-22.17" maxlon="45.471">
+  <range distance="100" red="255" green="255" blue="255" />
+  <range distance="300" red="0" green="255" blue="0" />
+  <range distance="700" red="0" green="0" blue="255" />
+  <range distance="1000" red="255" green="255" blue="0" />
+  <range distance="1000000" red="255" green="0" blue="0" />
+</map>
